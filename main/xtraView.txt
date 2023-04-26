@@ -1,0 +1,106 @@
+from django.shortcuts import render,redirect,get_object_or_404
+from main.models import Student,Engr_Std,Medical_Std,CS_Std
+from main.forms import AddStudentForm
+from django.utils import timezone
+from django.urls import reverse
+
+def add_std(request):
+	if request.method=='POST':
+		form=AddStudentForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('list_view')
+	else:
+		form=AddStudentForm()
+	return render(request,'main/add_std.html',{'form':form})
+
+
+
+def list_view(request):
+	students=Student.objects.all()
+	
+	studentEngr=Student.objects.filter(FIELDS='Engineering')
+	engr1=Engr_Std()
+	for std in studentEngr:
+		engr1.Roll_No=std.Roll_No
+		engr1.Name=std.Name
+		engr1.F_Name=std.F_Name
+		engr1.Board=std.Board
+		engr1.Marks=std.Marks
+		engr1.FIELDS=std.FIELDS
+		engr1.Condition=std.Condition
+		engr1.Entry_Date=std.Entry_Date
+		engr1.Selected=std.Selected
+		engr1.Selected_Date=std.Selected_Date
+		engr1.save()
+
+
+	studentMed=Student.objects.filter(FIELDS='Medical')
+	med1=Medical_Std()
+	for std in studentMed:
+		med1.Roll_No=std.Roll_No
+		med1.Name=std.Name
+		med1.F_Name=std.F_Name
+		med1.Board=std.Board
+		med1.Marks=std.Marks
+		med1.FIELDS=std.FIELDS
+		med1.Condition=std.Condition
+		med1.Entry_Date=std.Entry_Date
+		med1.Selected=std.Selected
+		med1.Selected_Date=std.Selected_Date
+		med1.save()
+
+	studentCS=Student.objects.filter(FIELDS='Computer Science')
+	CS1=CS_Std()
+	for std in studentCS:
+		CS1.Roll_No=std.Roll_No
+		CS1.Name=std.Name
+		CS1.F_Name=std.F_Name
+		CS1.Board=std.Board
+		CS1.Marks=std.Marks
+		CS1.FIELDS=std.FIELDS
+		CS1.Condition=std.Condition
+		CS1.Entry_Date=std.Entry_Date
+		CS1.Selected=std.Selected
+		CS1.Selected_Date=std.Selected_Date
+		CS1.save()
+	return render(request,'main/students_list.html',{'students':students})
+
+def selected_view(request):
+	students=Student.objects.filter(Selected=True)
+	return render(request,'main/selected_list.html',{'students':students})
+
+
+def medical_std(request):
+	medical1=Medical_Std.objects.all()
+	return render(request,'main/MedicalStudents.html',{'students':medical1})
+
+def Engr_std(request):
+	engr=Engr_Std.objects.all()
+	return render(request,'main/Engineering.html',{'students':engr})
+
+def cs_std(request):
+	cs=CS_Std.objects.all()
+	return render(request,'main/ComputerScience.html',{'students':cs})
+
+
+def select1(request,pk):
+	d1=get_object_or_404(Medical_Std,pk=pk)
+	d2.get_object_or_404(Student,pk=pk)
+	d2.selected2()
+	d2.selected2()
+	return redirect('main:medical_std')
+
+def select2(request,pk):
+	d2=get_object_or_404(Engr_Std,pk=pk)
+	d2.get_object_or_404(Student,pk=pk)
+	d2.selected2()
+	d2.selected2()
+	return redirect('main:engr_std')
+
+def select3(request,pk):
+	d13=get_object_or_404(CS_Std,pk=pk)
+	d2.get_object_or_404(Student,pk=pk)
+	d2.selected2()
+	d13.selected3()
+	return redirect('main:cs_std')

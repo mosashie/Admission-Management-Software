@@ -1,0 +1,66 @@
+ {% extends 'base.html' %}
+
+ {% block title %}
+	Search
+ {% endblock title %}
+ {% block content %}
+
+<form class="form-inline col-md-12" method="POST" style="margin-top:20px;">
+	{% csrf_token %}
+	<div class="form-group">
+			<input type="search" name="srch" class="form-control">
+
+		<label class="col-md-2"><button type="submit" class="btn btn-danger">Search</button></label>
+	</div>
+</form>
+<div style="margin-top: 20px;"></div>
+{% if error %}
+<div class="alert alert-danger dismissable">
+	<button type="button" class="close" data-dismiss='alert'>&times;</button>
+	{{error}}
+</div>
+{% endif %}
+<table class="table">
+	<thead>
+		<th>ID</th>
+		<th>Roll_No</th>
+		<th>Name</th>
+		<th>F/Name</th>
+		<th>Address</th>
+		<th>Marks</th>
+		<th>Contact</th>
+		<th>Field</th>
+		<th>Condition</th>
+		<th>Selected</th>
+		<th>Check</th>
+		<th>Remove</th>
+	</thead>
+	<tbody>
+		{% for std in search11 %}
+		<tr>
+			<td>{{std.id}}</td>
+			<td>{{std.Roll_No}}</td>
+			<td>{{std.Name}}</td>
+			<td>{{std.F_Name}}</td>
+			<td>{{std.Address}}</td>
+			<td>{{std.Marks}}</td>
+			<td>{{std.Contact}}</td>
+			<td>{{std.FIELDS}}</td>
+			<td>{{std.Condition}}</td>
+			<td>{{std.Selected}}</td>
+
+			<td>
+				{%if not std.Selected %}
+				<a class="btn btn-primary" href="{% url 'main:select1' pk=std.pk%}">Select</a>
+				{% else %}
+				<a class="btn btn-primary disabled" href="{% url 'main:select1' pk=std.pk%}">Selected</a>
+				{% endif %}
+			</td>
+			<td><a class="btn btn-danger" href="{% url 'main:delete2' pk=std.pk %}">Delete</a></td>
+		</tr>
+
+		{% endfor %}
+	</tbody>
+</table>
+
+ {% endblock content %}

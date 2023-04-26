@@ -1,0 +1,37 @@
+.navbar-nav{
+	text-align: center;
+}
+
+.form input,select{
+	border-radius: 10px;
+	border:0;
+	box-shadow: 0 0 10px black;
+}
+.form input:focus{
+	border: 0;
+	box-shadow: 0 0 20px skyblue;
+}
+.navbar{
+	box-shadow: 0 2px 10px black;
+	padding: 10px;
+}
+
+.navbar a{
+	color: black;
+	font-size: 18px;
+	font-weight: bold;
+	font-style: italic;
+}
+table{
+	font-size: 19px;
+}
+table th{
+	background: skyblue;
+}
+
+.table40{
+	background-color: red;
+}
+table tr:nth-child(50){
+    border: 2px solid red;
+}

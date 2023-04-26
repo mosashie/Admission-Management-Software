@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Admission|{% block title %}{% endblock title %}</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css1/bootstrap.min.css' %}">
+	<script type="text/javascript" src="{% static 'js1/jquery-3.4.1.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js1/bootstrap.min.js'%}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css1/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'font/css/all.css' %}">
+</head>
+<body>
+<div class="container-fluid">
+
+		<nav class="navbar navbar-expand-md navbar-light col-md-12">
+				<a href="{% url 'main:list_view' %}"><img src="{% static 'images/logo2.png' %}" width="100"></a>
+
+
+			<button class="navbar-toggler" type="button" data-toggle='collapse' data-target='#navbar1'>
+					<span class="navbar-toggler-icon"></span>
+			</button>
+				<span class="col-md-2"></span>
+				<div class="collapse navbar-collapse col-md-8" id="navbar1">
+					<ul class="nav navbar-nav">
+						<li class="nav-item"><a class="nav-link" href="{% url 'main:add' %}">ADD Students</a></li>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<li class="nav-item"><a class="nav-link" href="{% url 'main:list_view' %}">All Students</a></li>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Selected Students</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="{% url 'main:selected_view' %}">ALL Selected</a>
+									<a class="dropdown-item" href="{% url 'main:slct_med' %}">Medical  Selected</a>
+								<a class="dropdown-item" href="{% url 'main:slct_eng' %}">Engr.  Selected</a>
+								<a class="dropdown-item" href="{% url 'main:slct_cs' %}">CS  Selected</a>
+								<a class="dropdown-item" href="{% url 'main:slct_hum' %}">Humanitie Selected</a>
+							</div>
+
+						</li>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Fields</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="{% url 'main:medical_std' %}">Medical Students</a>
+								<a class="dropdown-item" href="{% url 'main:Engr_std' %}">Engr. Students</a>
+								<a class="dropdown-item" href="{% url 'main:cs_std' %}">CS Students</a>
+								<a class="dropdown-item" href="{% url 'main:hum_std' %}">Humanities</a>
+							</div>
+
+						</li>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle='dropdown'>Local</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="{% url 'main:local_med' %}">Medical Students</a>
+								<a class="dropdown-item" href="{% url 'main:local_eng' %}">Engr. Students</a>
+								<a class="dropdown-item" href="{% url 'main:local_cs' %}">CS Students</a>
+								<a class="dropdown-item" href="{% url 'main:local_hum' %}">Humanities</a>
+							</div>
+
+						</li>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Local Selected</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="{% url 'main:all_local_slct' %}">All Local Select</a>
+									<a class="dropdown-item" href="{% url 'main:med_local_slct' %}">Medical Local Select</a>
+								<a class="dropdown-item" href="{% url 'main:eng_local_slct' %}">Engr. Local Select</a>
+								<a class="dropdown-item" href="{% url 'main:cs_local_slct' %}">CS Local Select</a>
+								<a class="dropdown-item" href="{% url 'main:hum_local_slct' %}">Humanities Local Select</a>
+							</div>
+
+
+						</li>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<a class="btn btn-light" href="{% url 'main:search' %}"><span class="fa fa-search"></span></a>
+
+
+					</ul>
+				</div>
+		</nav>
+
+<div style="margin: 10px;">
+{% block content %}
+{% endblock content %}
+</div>
+
+</div>
+<div class="mydiv">
+<marquee> <h1 class="name2" style="font-size: 60px;
+color: red;
+margin-top:auto;
+font-family:Algerian;">Farid Ahmad</h1> </marquee>
+</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+from django.urls import path
+from main import views
+
+app_name='main'
+
+urlpatterns = [
+    path('', views.list_view,name='list_view'),
+    path('add_std/',views.add_std,name='add_std'),
+    path('medical/',views.medical_std,name='medical_std'),
+    path('engineering/',views.Engr_std,name='engr_std'),
+    path('CS/',views.cs_std,name='cs_std'),
+    #path('Disabled/'views.Disabled_std,name='Disabled_std'),
+    #path('Sports/'views.Sports_std,name='Sports_std'),
+    path('selected/', views.selected_view,name='selected_view'),
+    path('select1/<int:pk>/',views.select1,name='select1'),
+    path('select2/<int:pk>/',views.select2,name='select2'),
+    path('select3/<int:pk>/',views.select3,name='select3'),
+]

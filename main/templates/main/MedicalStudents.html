@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Medical{%endblock title%}
+{% block content %}
+<h1 style="text-align: center;">Medical <span style="color: orange;">Students </span><span class="badge badge-primary">{{students.count}}</span></h1>
+
+<table class="table">
+	<thead>
+		<th>ID</th>
+		<th>Roll_No</th>
+		<th>Name</th>
+		<th>F/Name</th>
+		<th>Address</th>
+		<th>Marks</th>
+		<th>Contact</th>
+		<th>Field</th>
+		<th>Condition</th>
+		<th>Selected</th>
+		<th>Check</th>
+		<th>Remove</th>
+	</thead>
+	<tbody>
+		{% for std in students %}
+		<tr>
+			<td>{{std.id}}</td>
+			<td>{{std.Roll_No}}</td>
+			<td>{{std.Name}}</td>
+			<td>{{std.F_Name}}</td>
+			<td>{{std.Address}}</td>
+			<td>{{std.Marks}}</td>
+			<td>{{std.Contact}}</td>
+			<td>{{std.FIELDS}}</td>
+			<td>{{std.Condition}}</td>
+			<td>{{std.Selected}}</td>
+
+			<td>
+				{%if not std.Selected %}
+				<a class="btn btn-primary" href="{% url 'main:select1' pk=std.pk%}">Select</a>
+				{% else %}
+				<a class="btn btn-primary disabled" href="{% url 'main:select1' pk=std.pk%}">Selected</a>
+				{% endif %}
+			</td>
+			<td><a class="btn btn-danger" href="{% url 'main:delete2' pk=std.pk %}">Delete</a></td>
+		</tr>
+
+		{% endfor %}
+	</tbody>
+</table>
+
+
+{% endblock content %}

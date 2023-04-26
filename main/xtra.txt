@@ -1,0 +1,109 @@
+from django.db import models
+from django.utils import timezone
+# Create your models here.
+
+class Student(models.Model):
+	Conditions=[('OPEN','OPEN'),('SPORT','SPORT'),('DISABLED','DISABLED'),]
+	FIELD1_S=[('Medical','Medical'),('Engineering','Engineering'),('Computer Science','Computer Science'),]
+	Name=models.CharField(max_length=100)
+	F_Name=models.CharField(max_length=100)
+	Roll_No=models.PositiveIntegerField(unique=True,primary_key=True)
+	Board=models.CharField(max_length=100)
+	Marks=models.PositiveIntegerField()
+	FIELDS=models.CharField(max_length=20,choices=FIELD1_S,default='Medical')
+	Condition=models.CharField(max_length=10,choices=Conditions,default='OPEN')
+	Entry_Date=models.DateTimeField(default=timezone.now())
+	Selected=models.BooleanField(null=True,blank=True)
+	Selected_Date=models.DateTimeField(null=True,blank=True)
+
+	def selected1(self):
+		self.Selected=True
+		self.Selected_Date=timezone.now()
+		self.save()
+
+
+	class Meta:
+		ordering=('-Marks',)
+
+	def __str__(self):
+		return str(self.Roll_No)
+
+
+class Medical_Std(models.Model):
+	Conditions=[('OPEN','OPEN'),('SPORT','SPORT'),('DISABLED','DISABLED'),]
+	FIELD1_S=[('Medical','Medical'),('Engineering','Engineering'),('Computer Science','Computer Science'),]
+	Roll_No=models.PositiveIntegerField(unique=True,primary_key=True)
+	Name=models.CharField(max_length=100)
+	F_Name=models.CharField(max_length=100)
+	Board=models.CharField(max_length=100)
+	Marks=models.PositiveIntegerField()
+	FIELDS=models.CharField(max_length=20,choices=FIELD1_S,default='Medical')
+	Condition=models.CharField(max_length=10,choices=Conditions,default='OPEN')
+	Entry_Date=models.DateTimeField(default=timezone.now())
+	Selected=models.BooleanField(null=True,blank=True)
+	Selected_Date=models.DateTimeField(null=True,blank=True)
+
+	def selected2(self):
+		self.Selected=True
+		self.Selected_Date=timezone.now()
+		self.save()
+
+	class Meta:
+		ordering=('-Marks',)
+
+	def __str__(self):
+		return str(self.Roll_No)
+
+
+class Engr_Std(models.Model):
+	Conditions=[('OPEN','OPEN'),('SPORT','SPORT'),('DISABLED','DISABLED'),]
+	FIELD1_S=[('Medical','Medical'),('Engineering','Engineering'),('Computer Science','Computer Science'),]
+	Roll_No=models.PositiveIntegerField(unique=True,primary_key=True)
+	Name=models.CharField(max_length=100)
+	F_Name=models.CharField(max_length=100)
+	Board=models.CharField(max_length=100)
+	Marks=models.PositiveIntegerField()
+	FIELDS=models.CharField(max_length=20,choices=FIELD1_S,default='Medical')
+	Condition=models.CharField(max_length=10,choices=Conditions,default='OPEN')
+	Entry_Date=models.DateTimeField(default=timezone.now())
+	Selected=models.BooleanField(null=True,blank=True)
+	Selected_Date=models.DateTimeField(null=True,blank=True)
+
+
+	def selected2(self):
+		self.Selected=True
+		self.Selected_Date=timezone.now()
+		self.save()
+
+	class Meta:
+		ordering=('-Marks',)
+
+	def __str__(self):
+		return str(self.Roll_No)
+
+
+class CS_Std(models.Model):
+	Conditions=[('OPEN','OPEN'),('SPORT','SPORT'),('DISABLED','DISABLED'),]
+	FIELD1_S=[('Medical','Medical'),('Engineering','Engineering'),('Computer Science','Computer Science'),]
+	Name=models.CharField(max_length=100)
+	F_Name=models.CharField(max_length=100)
+	Roll_No=models.PositiveIntegerField(unique=True,primary_key=True)
+	Board=models.CharField(max_length=100)
+	Marks=models.PositiveIntegerField()
+	FIELDS=models.CharField(max_length=20,choices=FIELD1_S,default='Medical')
+	Condition=models.CharField(max_length=10,choices=Conditions,default='OPEN')
+	Entry_Date=models.DateTimeField(default=timezone.now())
+	Selected=models.BooleanField(null=True,blank=True)
+	Selected_Date=models.DateTimeField(null=True,blank=True)
+
+
+	def selected3(self):
+		self.Selected=True
+		self.Selected_Date=timezone.now()
+		self.save()
+		
+	class Meta:
+		ordering=('-Marks',)
+
+	def __str__(self):
+		return str(self.Roll_No)

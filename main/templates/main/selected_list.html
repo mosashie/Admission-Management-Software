@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}List{% endblock title %}
+
+
+{% block content %}
+<h1 style="text-align: center;">Selected<span style="color: orange;">Students </span><span class="badge badge-primary">{{students.count}}</span></h1>
+
+<table class="table">
+	<thead>
+		<th>ID</th>
+		<th>Roll_No</th>
+		<th>Name</th>
+		<th>F/Name</th>
+		<th>Address</th>
+		<th>Marks</th>
+		<th>Contact</th>
+		<th>Field</th>
+		<th>Condition</th>
+		<th>Selected</th>
+		<th>Remove</th>
+	</thead>
+	<tbody>
+		{% for std1 in students %}
+		<tr>
+			<td>{{std1.id}}</td>
+			<td>{{std1.Roll_No}}</td>
+			<td>{{std1.Name}}</td>
+			<td>{{std1.F_Name}}</td>
+			<td>{{std1.Address}}</td>
+			<td>{{std1.Marks}}</td>
+			<td>{{std1.Contact}}</td>
+			<td>{{std1.FIELDS}}</td>
+			<td>{{std1.Condition}}</td>
+			<td>{{std1.Selected}}</td>
+			<td><a class="btn btn-danger" href="{% url 'main:delete1' pk=std1.pk %}">Delete</a></td>
+		</tr>
+
+		{% endfor %}
+	</tbody>
+</table>
+
+
+
+{% endblock content %}
